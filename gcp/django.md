@@ -1,7 +1,7 @@
 
 # Dango on gcp
 
-### django設定
+### 環境設定
 
 ```
 # 更新
@@ -13,4 +13,39 @@ sudo apt install python(x.x)-dev
 # 安裝虛擬環
 sudo apt-get -y install python3-pip
 sudo pip3 install virtualenv
+
+# 安裝git
+sudo apt-get install -y git
+sudo config --global user.name "user" # 請設定與github相同
+sudo config --global user.email "user@gmail.com" # 請設定與github相同
+
 ```
+
+### 請動虛擬環境
+
+```
+# 建立
+virtualenv envs/web
+source envs/web/bin/activate
+
+```
+
+### 安裝django & 設定
+
+```
+pip install django
+django-admin startproject myweb
+cd myweb
+pip freeze > requirements.txt
+
+
+# 初始化 & 上傳到 github
+
+git init
+git remote add origin https://github.com/user/my_repo.git
+git add
+git commit -m 'first commit'
+git push origin master
+
+```
+
