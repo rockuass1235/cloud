@@ -55,6 +55,12 @@ nano setting.py
 python manage.py runserver 0.0.0.0:8000
 
 ```
+### 簡易關ssh server不關閉方法
+
+
+```
+nohup python manage.py runserver 0.0.0.0:8000 &
+```
 
 ### 異地環境移植
 
