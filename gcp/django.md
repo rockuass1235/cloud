@@ -47,5 +47,24 @@ git add
 git commit -m 'first commit'
 git push origin master
 
+
+# 初次django啟動
+cd myweb
+nano setting.py
+# 修改 setting.py 內 ALLOW_HOSTS=['*',]
+python manage.py runserver 0.0.0.0:8000
+
 ```
 
+### 異地環境移植
+
+```
+git clone https://github.com/user/my_repo.git
+
+# 安裝python 環境
+cd myweb
+pip install -r 'requirements.txt'
+
+```
+
+輸入ip:8000測試是否有看到django火箭
