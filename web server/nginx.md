@@ -1,5 +1,5 @@
 # Nginx 安裝
-
+作業系統版本: ubuntu 20.04
 ```
 sudo apt install nginx
 # 啟動nginx
