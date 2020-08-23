@@ -16,7 +16,7 @@ sudo ufw enable
 #  Nginx HTTP
 #  Nginx HTTPS
 sudo ufw allow 'Nginx FULL'
-
+sudo ufw reload
 sudo ufw status
 ```
 
@@ -24,4 +24,45 @@ sudo ufw status
 http://your_server_ip
 
 
+# 設定nginx 網站區塊
 
+```
+sudo mkdir -p /var/www/your_domain/html
+sudo chown -R $USER:$USER /var/www/your_domain/html #系統會自動帶入$USER參數
+sudo chmod -R 755 /var/www/your_domain
+
+# 產生範例網頁
+nano /var/www/your_domain/html/index.html
+
+<html>
+    <head>
+        <title>Welcome to your_domain!</title>
+    </head>
+    <body>
+        <h1>Success!  The your_domain server block is working!</h1>
+    </body>
+</html>
+
+# 設定conf
+sudo nano /etc/nginx/sites-available/your_domain
+
+server {
+        listen 80;
+        listen [::]:80;
+
+        root /var/www/your_domain/html;
+        index index.html index.htm index.nginx-debian.html;
+
+        server_name your_domain www.your_domain;
+
+        location / {
+                try_files $uri $uri/ =404;
+        }
+}
+
+# 利用ln設定路徑映射
+sudo ln -s /etc/nginx/sites-available/your_domain /etc/nginx/sites-enabled/
+sudo systemctl restart nginx
+# 測試
+sudo nginx -t
+```
