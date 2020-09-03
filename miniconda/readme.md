@@ -22,3 +22,4 @@ conda install nb_conda
 
 ```
 # ssh remote
+![img](imgs/tunnel.PNG)
