@@ -21,3 +21,4 @@ conda install -n test ipykernel
 conda install nb_conda
 
 ```
+# ssh remote
